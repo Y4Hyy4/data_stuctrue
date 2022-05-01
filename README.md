@@ -1,2 +1,2 @@
-# data_stuctrue
-c/cpp, data structrue leaning
+# data_structure
+c/cpp, data structure leaning
