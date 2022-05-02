@@ -1,5 +1,5 @@
-#ifndef _TREADTREE_H
-#define _TREADTREE_H
+#ifndef TREADTREE_H
+#define TREADTREE_H
 
 #define ElemType char
 
@@ -16,4 +16,4 @@ typedef struct ThreadNode {
 
 void InThread(ThreadTree& p, ThreadNode*& pre);
 
-#endif // _TREADTREE_H
+#endif // TREADTREE_H

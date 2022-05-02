@@ -1,5 +1,5 @@
-#ifndef _BITREE_H
-#define _BITREE_H
+#ifndef BITREE_H
+#define BITREE_H
 
 #define ElemType char
 
@@ -19,4 +19,4 @@ void PreOrder2(BiTree T);
 void InOrder2(BiTree T);
 void PostOrder2(BiTree T);
 void LevelOrder(BiTree T);
-#endif // _BITREE_H
+#endif // BITREE_H

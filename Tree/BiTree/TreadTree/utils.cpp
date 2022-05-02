@@ -2,7 +2,8 @@
 #include <iostream>
 using namespace std;
 
-ThreadTree CreateTree() {
+ThreadTree CreateTree()
+{
     ThreadNode* pA = (ThreadNode*)malloc(sizeof(ThreadNode));
     ThreadNode* pB = (ThreadNode*)malloc(sizeof(ThreadNode));
     ThreadNode* pC = (ThreadNode*)malloc(sizeof(ThreadNode));
@@ -26,6 +27,7 @@ ThreadTree CreateTree() {
     pF->lchild = pF->rchild = NULL;
     return pA;
 }
-void visit(ThreadNode node) {
+void visit(ThreadNode node)
+{
     printf("%c", node.data);
 }

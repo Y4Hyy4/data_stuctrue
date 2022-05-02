@@ -4,28 +4,32 @@
 #include <queue>
 using namespace std;
 
-void PreOrder(BiTree T) {
+void PreOrder(BiTree T)
+{
     if (!T) return;
     visit(*T);
     PreOrder(T->lchild);
     PreOrder(T->rchild);
 }
 
-void InOrder(BiTree T) {
+void InOrder(BiTree T)
+{
     if (!T) return;
     InOrder(T->lchild);
     visit(*T);
     InOrder(T->rchild);
 }
 
-void PostOrder(BiTree T) {
+void PostOrder(BiTree T)
+{
     if (!T) return;
     PostOrder(T->lchild);
     PostOrder(T->rchild);
     visit(*T);
 }
 
-void PreOrder2(BiTree T) {
+void PreOrder2(BiTree T)
+{
     if (!T) return;
     stack<BiTNode*> stack;
     BiTNode* p = T;
@@ -41,7 +45,8 @@ void PreOrder2(BiTree T) {
     }
 }
 
-void InOrder2(BiTree T) {
+void InOrder2(BiTree T)
+{
     if (!T) return;
     stack<BiTNode*> stack;
     BiTNode* p = T;
@@ -57,7 +62,8 @@ void InOrder2(BiTree T) {
     }
 }
 
-void PostOrder2(BiTree T) {
+void PostOrder2(BiTree T)
+{
     if (!T) return;
     stack<BiTNode*> stack;
     BiTNode* r = NULL;
@@ -80,7 +86,8 @@ void PostOrder2(BiTree T) {
     }
 }
 
-void LevelOrder(BiTree T) {
+void LevelOrder(BiTree T)
+{
     if (!T) return;
     queue<BiTNode*> queue;
     BiTNode* p = T;
@@ -94,7 +101,8 @@ void LevelOrder(BiTree T) {
 }
 
 
-int main(int argc, char const* argv[]) {
+int main(int argc, char const* argv[])
+{
     BiTree root = CreateTree();
     printf("PreOrder:\t");
     PreOrder(root);

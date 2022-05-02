@@ -3,7 +3,8 @@
 
 using namespace std;
 
-void InThread(ThreadTree& p, ThreadNode*& pre) {
+void InThread(ThreadTree& p, ThreadNode*& pre)
+{
     if (!p) return;
     InThread(p->lchild, pre);
     if (p->lchild == NULL) {
@@ -18,7 +19,8 @@ void InThread(ThreadTree& p, ThreadNode*& pre) {
     InThread(p->rchild, pre);
 }
 
-int main(int argc, char const* argv[]) {
+int main(int argc, char const* argv[])
+{
 
     return 0;
 }
