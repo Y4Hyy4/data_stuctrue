@@ -1,13 +1,14 @@
 #ifndef BITREE_H
 #define BITREE_H
 
-#define ElemType char
+typedef char ElemType;
 
-typedef struct BiTNode {
+typedef struct BiTNode
+{
     ElemType data;
-    struct BiTNode* lchild;
-    struct BiTNode* rchild;
-}BiTNode, * BiTree;
+    struct BiTNode *lchild;
+    struct BiTNode *rchild;
+} BiTNode, *BiTree;
 
 BiTree CreateTree();
 void visit(BiTNode node);
@@ -19,4 +20,4 @@ void PreOrder2(BiTree T);
 void InOrder2(BiTree T);
 void PostOrder2(BiTree T);
 void LevelOrder(BiTree T);
-#endif // BITREE_H
+#endif // _BITREE_H

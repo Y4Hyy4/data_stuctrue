@@ -32,15 +32,15 @@ void PreOrder2(BiTree T)
 {
     if (!T) return;
     stack<BiTNode*> stack;
-    BiTNode* p = T;
-    while (p || !stack.empty()) {
-        if (p) {
-            visit(*p);
-            stack.push(p);
-            p = p->lchild;
+    BiTNode* cur = T;
+    while (cur || !stack.empty()) {
+        if (cur) {
+            visit(*cur);
+            stack.push(cur);
+            cur = cur->lchild;
         } else {
-            p = stack.top(), stack.pop();
-            p = p->rchild;
+            cur = stack.top(), stack.pop();
+            cur = cur->rchild;
         }
     }
 }
@@ -49,15 +49,15 @@ void InOrder2(BiTree T)
 {
     if (!T) return;
     stack<BiTNode*> stack;
-    BiTNode* p = T;
-    while (p || !stack.empty()) {
-        if (p) {
-            stack.push(p);
-            p = p->lchild;
+    BiTNode* cur = T;
+    while (cur || !stack.empty()) {
+        if (cur) {
+            stack.push(cur);
+            cur = cur->lchild;
         } else {
-            p = stack.top(), stack.pop();
-            visit(*p);
-            p = p->rchild;
+            cur = stack.top(), stack.pop();
+            visit(*cur);
+            cur = cur->rchild;
         }
     }
 }
@@ -66,21 +66,21 @@ void PostOrder2(BiTree T)
 {
     if (!T) return;
     stack<BiTNode*> stack;
-    BiTNode* r = NULL;
-    BiTNode* p = T;
-    while (p || !stack.empty()) {
-        if (p) {
-            stack.push(p);
-            p = p->lchild;
+    BiTNode* pre = NULL;
+    BiTNode* cur = T;
+    while (cur || !stack.empty()) {
+        if (cur) {
+            stack.push(cur);
+            cur = cur->lchild;
         } else {
-            p = stack.top();
-            if (p->rchild && r != p->rchild) {
-                p = p->rchild;
+            cur = stack.top();
+            if (cur->rchild && pre != cur->rchild) {
+                cur = cur->rchild;
             } else {
-                visit(*p);
+                visit(*cur);
                 stack.pop();
-                r = p;
-                p = NULL;
+                pre = cur;
+                cur = NULL;
             }
         }
     }
@@ -90,13 +90,13 @@ void LevelOrder(BiTree T)
 {
     if (!T) return;
     queue<BiTNode*> queue;
-    BiTNode* p = T;
+    BiTNode* cur = T;
     queue.push(T);
     while (!queue.empty()) {
-        p = queue.front(), queue.pop();
-        visit(*p);
-        if (p->lchild) queue.push(p->lchild);
-        if (p->rchild) queue.push(p->rchild);
+        cur = queue.front(), queue.pop();
+        visit(*cur);
+        if (cur->lchild) queue.push(cur->lchild);
+        if (cur->rchild) queue.push(cur->rchild);
     }
 }
 
