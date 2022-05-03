@@ -31,15 +31,15 @@ void PostOrder(BiTree T)
 void PreOrder2(BiTree T)
 {
     if (!T) return;
-    stack<BiTNode*> stack;
+    stack<BiTNode*> st;
     BiTNode* cur = T;
-    while (cur || !stack.empty()) {
+    while (cur || !st.empty()) {
         if (cur) {
             visit(*cur);
-            stack.push(cur);
+            st.push(cur);
             cur = cur->lchild;
         } else {
-            cur = stack.top(), stack.pop();
+            cur = st.top(), st.pop();
             cur = cur->rchild;
         }
     }
@@ -48,14 +48,14 @@ void PreOrder2(BiTree T)
 void InOrder2(BiTree T)
 {
     if (!T) return;
-    stack<BiTNode*> stack;
+    stack<BiTNode*> st;
     BiTNode* cur = T;
-    while (cur || !stack.empty()) {
+    while (cur || !st.empty()) {
         if (cur) {
-            stack.push(cur);
+            st.push(cur);
             cur = cur->lchild;
         } else {
-            cur = stack.top(), stack.pop();
+            cur = st.top(), st.pop();
             visit(*cur);
             cur = cur->rchild;
         }
@@ -65,20 +65,20 @@ void InOrder2(BiTree T)
 void PostOrder2(BiTree T)
 {
     if (!T) return;
-    stack<BiTNode*> stack;
+    stack<BiTNode*> st;
     BiTNode* pre = NULL;
     BiTNode* cur = T;
-    while (cur || !stack.empty()) {
+    while (cur || !st.empty()) {
         if (cur) {
-            stack.push(cur);
+            st.push(cur);
             cur = cur->lchild;
         } else {
-            cur = stack.top();
+            cur = st.top();
             if (cur->rchild && pre != cur->rchild) {
                 cur = cur->rchild;
             } else {
                 visit(*cur);
-                stack.pop();
+                st.pop();
                 pre = cur;
                 cur = NULL;
             }
@@ -89,18 +89,64 @@ void PostOrder2(BiTree T)
 void LevelOrder(BiTree T)
 {
     if (!T) return;
-    queue<BiTNode*> queue;
+    queue<BiTNode*> q;
     BiTNode* cur = T;
-    queue.push(T);
-    while (!queue.empty()) {
-        cur = queue.front(), queue.pop();
+    q.push(T);
+    while (!q.empty()) {
+        cur = q.front(), q.pop();
         visit(*cur);
-        if (cur->lchild) queue.push(cur->lchild);
-        if (cur->rchild) queue.push(cur->rchild);
+        if (cur->lchild) q.push(cur->lchild);
+        if (cur->rchild) q.push(cur->rchild);
     }
 }
 
+void InvertLevel(BiTree T)
+{
+    if (!T) return;
+    stack<BiTNode*> st;
+    queue<BiTNode*> q;
+    BiTNode* cur = T;
+    q.push(T);
+    while (!q.empty()) {
+        cur = q.front(), q.pop();
+        st.push(cur);
+        if (cur->lchild) q.push(cur->lchild);
+        if (cur->rchild) q.push(cur->rchild);
+    }
+    while (!st.empty()) {
+        cur = st.top(), st.pop();
+        visit(*cur);
+    }
+}
 
+int Depth1(BiTree T)
+{
+    if (!T) return 0;
+    int depth = 0;
+    queue<BiTNode*> q;
+    BiTNode* cur = T;
+    q.push(cur);
+    while (!q.empty()) {
+        depth++;
+        int cnt = 0;
+        int size = q.size();
+        while (cnt < size) {
+            cur = q.front(), q.pop();
+            cnt++;
+            if (cur->lchild) q.push(cur->lchild);
+            if (cur->rchild) q.push(cur->rchild);
+        }
+    }
+    return depth;
+}
+
+int Depth2(BiTree T)
+{
+    if (!T) return 0;
+    int lDepth = Depth2(T->lchild);
+    int rDepth = Depth2(T->rchild);
+    return lDepth > rDepth ? lDepth + 1 : rDepth + 1;
+}
 int main(int argc, char const* argv[])
 {
     BiTree root = CreateTree();
@@ -131,6 +177,19 @@ int main(int argc, char const* argv[])
     printf("LevelOrder:\t");
     LevelOrder(root);
     printf("\n");
+
+    printf("InvertLevel:\t");
+    InvertLevel(root);
+    printf("\n");
+
+    printf("Depth1:\t");
+    printf("%d", Depth1(root));
+    printf("\n");
+
+    printf("Depth2:\t");
+    printf("%d", Depth2(root));
+    printf("\n");
+
 
     return 0;
 }

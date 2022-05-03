@@ -20,4 +20,8 @@ void PreOrder2(BiTree T);
 void InOrder2(BiTree T);
 void PostOrder2(BiTree T);
 void LevelOrder(BiTree T);
+void InvertLevel(BiTree T);
+int Depth1(BiTree T);
+int Depth2(BiTree T);
+
 #endif // _BITREE_H

@@ -15,6 +15,15 @@ typedef struct ThreadNode
     int ltag, rtag;
 } ThreadNode, *ThreadTree;
 
-void InThread(ThreadTree &p, ThreadNode *&pre);
+ThreadTree CreateThreadTree();
+void visit(ThreadNode p);
+
+void InThread(ThreadTree &T, ThreadNode *&pre);
+ThreadNode *FirstNode(ThreadTree T);
+ThreadNode *NextNode(ThreadNode *p);
+ThreadNode *LastNode(ThreadTree T);
+ThreadNode *PreNode(ThreadNode *p);
+void InOrder(ThreadTree T);
+
 
 #endif // TREADTREE_H
