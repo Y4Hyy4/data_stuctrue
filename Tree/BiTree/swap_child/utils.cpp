@@ -1,5 +1,6 @@
 #include "BiTree.h"
 #include <iostream>
+#include <queue>
 using namespace std;
 
 BiTree CreateTree()
@@ -26,6 +27,20 @@ BiTree CreateTree()
     pC->rchild = NULL;
     pF->lchild = pF->rchild = NULL;
     return pA;
+}
+
+void LevelOrder(BiTree T)
+{
+    if (!T) return;
+    queue<BiTNode*> q;
+    BiTNode* cur = T;
+    q.push(T);
+    while (!q.empty()) {
+        cur = q.front(), q.pop();
+        visit(*cur);
+        if (cur->lchild) q.push(cur->lchild);
+        if (cur->rchild) q.push(cur->rchild);
+    }
 }
 void visit(BiTNode node)
 {

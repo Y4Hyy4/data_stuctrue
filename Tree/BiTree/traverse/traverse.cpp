@@ -119,6 +119,38 @@ void InvertLevel(BiTree T)
     }
 }
 
+void PreKthNode(BiTree T, int k)
+{
+    if (!T) return;
+    stack<BiTNode*> st;
+    BiTNode* cur = T;
+    int cnt = 0;
+    while (cur || !st.empty()) {
+        if (cur) {
+            cnt++;
+            if (cnt == k) {
+                visit(*cur);
+                return;
+            }
+            st.push(cur);
+            cur = cur->lchild;
+        } else {
+            cur = st.top(), st.pop();
+            cur = cur->rchild;
+        }
+    }
+}
+int preKthCnt = 0;
+ElemType PreKthNode2(BiTree T, int k)
+{
+    if (!T) return '#';
+    preKthCnt++;
+    if (preKthCnt == k) return T->data;
+    ElemType ch = PreKthNode2(T->lchild, k);
+    if (ch != '#') return ch;
+    return PreKthNode2(T->rchild, k);
+}
+
 int main(int argc, char const* argv[])
 {
     BiTree root = CreateTree();
@@ -152,6 +184,14 @@ int main(int argc, char const* argv[])
 
     printf("InvertLevel:\t");
     InvertLevel(root);
+    printf("\n");
+
+    printf("PreKthNode:\t");
+    PreKthNode(root, 3);
+    printf("\n");
+
+    printf("PreKthNode2:\t");
+    printf("%c", PreKthNode2(root, 3));
     printf("\n");
 
     return 0;
