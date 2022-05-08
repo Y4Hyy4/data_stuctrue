@@ -6,9 +6,9 @@ typedef char ElemType;
 typedef struct BiTNode
 {
     ElemType data;
-    struct BiTNode *lchild;
-    struct BiTNode *rchild;
-} BiTNode, *BiTree;
+    struct BiTNode* lchild;
+    struct BiTNode* rchild;
+} BiTNode, * BiTree;
 
 BiTree CreateTree();
 void visit(BiTNode node);
@@ -29,6 +29,10 @@ int Depth2(BiTree T);
 // create_by_order
 BiTree CreateByOrder(char* preOrder, char* inOrder, int len);
 // swap_child
-void SwapChild(BiTree &T, int k);
+void SwapChild(BiTree& T, int k);
+// delete_by_value
+void DelTree(BiTree& T);
+void DelByValue(BiTree& T, ElemType e, bool is_left, BiTNode*& pre);
+void DelByValue2(BiTree& T, ElemType e);
 
 #endif // _BITREE_H
