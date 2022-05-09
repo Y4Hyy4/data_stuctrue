@@ -34,5 +34,7 @@ void SwapChild(BiTree& T, int k);
 void DelTree(BiTree& T);
 void DelByValue(BiTree& T, ElemType e, bool is_left, BiTNode*& pre);
 void DelByValue2(BiTree& T, ElemType e);
-
+// find_ancestor
+bool find_ancestor(BiTree T, ElemType e);
+void find_ancestor2(BiTree T, ElemType e);
 #endif // _BITREE_H
