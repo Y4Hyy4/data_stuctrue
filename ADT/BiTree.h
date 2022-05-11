@@ -35,6 +35,7 @@ void DelTree(BiTree& T);
 void DelByValue(BiTree& T, ElemType e, bool is_left, BiTNode*& pre);
 void DelByValue2(BiTree& T, ElemType e);
 // find_ancestor
-bool find_ancestor(BiTree T, ElemType e);
-void find_ancestor2(BiTree T, ElemType e);
+bool findAncestor(BiTree T, ElemType e);
+void findAncestor2(BiTree T, ElemType e);
+BiTNode * findLCA(BiTree T, BiTNode* p, BiTNode* q);
 #endif // _BITREE_H

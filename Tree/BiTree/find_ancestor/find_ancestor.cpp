@@ -3,19 +3,19 @@
 #include <stack>
 using namespace std;
 
-bool find_ancestor(BiTree T, ElemType e)
+bool findAncestor(BiTree T, ElemType e)
 {
     if (!T) return false;
     if (T->data == e) {
         return true;
     }
-    if (find_ancestor(T->lchild, e) || find_ancestor(T->rchild, e)) {
+    if (findAncestor(T->lchild, e) || findAncestor(T->rchild, e)) {
         visit(*T);
         return true;
     } else return false;
 }
 
-void find_ancestor2(BiTree T, ElemType e)
+void findAncestor2(BiTree T, ElemType e)
 {
     if (!T) return;
     stack<BiTNode*> st;
@@ -52,14 +52,14 @@ int main(int argc, char const* argv[])
     LevelOrder(root);
     printf("\n");
     bool is_found = false;
-    find_ancestor(root, 'E');
+    findAncestor(root, 'E');
     printf("\n");
-    find_ancestor(root, 'F');
+    findAncestor(root, 'F');
     printf("\n");
 
-    find_ancestor2(root, 'E');
+    findAncestor2(root, 'E');
     printf("\n");
-    find_ancestor2(root, 'F');
+    findAncestor2(root, 'F');
     
     return 0;
 }
