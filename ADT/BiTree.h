@@ -38,4 +38,9 @@ void DelByValue2(BiTree& T, ElemType e);
 bool findAncestor(BiTree T, ElemType e);
 void findAncestor2(BiTree T, ElemType e);
 BiTNode * findLCA(BiTree T, BiTNode* p, BiTNode* q);
+// WPL
+int calWPL(BiTree T, int deep);
+int calWPL2(BiTree T, int deep);
+int calWPL3(BiTree T);
+
 #endif // _BITREE_H
